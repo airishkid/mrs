@@ -1,6 +1,6 @@
 drop database if exists `mrs`;
 create database `mrs`;
-use `mrs`
+use `mrs`;
 
 drop table if exists `patients`;
 create table `patients` (
@@ -67,7 +67,7 @@ create table `complaints` (
 	`id` int not null auto_increment primary key,
 	`present_complaint` text not null,
 	`history_of_present_illness` text not null,
-	`clinical_history_id` int not null
+	`clinical_history_id` int not null,
 	`patient_id` int not null
 );
 
