@@ -1,0 +1,335 @@
+<?php
+App::uses('AppModel', 'Model');
+/**
+ * Patient Model
+ *
+ * @property Appointment $Appointment
+ * @property ClinicalHistory $ClinicalHistory
+ * @property Complaint $Complaint
+ * @property Diagnostic $Diagnostic
+ * @property FamilyHistory $FamilyHistory
+ * @property Hmo $Hmo
+ * @property Hospitalization $Hospitalization
+ * @property LabResult $LabResult
+ * @property LeadECG $LeadECG
+ * @property MobileComplaint $MobileComplaint
+ * @property ObGyneHx $ObGyneHx
+ * @property PastMedicalHistory $PastMedicalHistory
+ * @property PersonalSocialHistory $PersonalSocialHistory
+ * @property PhysicalExamination $PhysicalExamination
+ * @property PhysicalState $PhysicalState
+ * @property Surgery $Surgery
+ * @property Therapeutic $Therapeutic
+ */
+class Patient extends AppModel {
+
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $validate = array(
+		'last_name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'first_name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'middle_name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'gender' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'status' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'birthdate' => array(
+			'date' => array(
+				'rule' => array('date'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'contact_number' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+	);
+
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Appointment' => array(
+			'className' => 'Appointment',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'ClinicalHistory' => array(
+			'className' => 'ClinicalHistory',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Complaint' => array(
+			'className' => 'Complaint',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Diagnostic' => array(
+			'className' => 'Diagnostic',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'FamilyHistory' => array(
+			'className' => 'FamilyHistory',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Hmo' => array(
+			'className' => 'Hmo',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Hospitalization' => array(
+			'className' => 'Hospitalization',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'LabResult' => array(
+			'className' => 'LabResult',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'LeadECG' => array(
+			'className' => 'LeadECG',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'MobileComplaint' => array(
+			'className' => 'MobileComplaint',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'ObGyneHx' => array(
+			'className' => 'ObGyneHx',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'PastMedicalHistory' => array(
+			'className' => 'PastMedicalHistory',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'PersonalSocialHistory' => array(
+			'className' => 'PersonalSocialHistory',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'PhysicalExamination' => array(
+			'className' => 'PhysicalExamination',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'PhysicalState' => array(
+			'className' => 'PhysicalState',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Surgery' => array(
+			'className' => 'Surgery',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Therapeutic' => array(
+			'className' => 'Therapeutic',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
+}
