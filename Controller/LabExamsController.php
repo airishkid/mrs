@@ -6,6 +6,8 @@ App::uses('AppController', 'Controller');
  * @property LabExam $LabExam
  */
 class LabExamsController extends AppController {
+    
+    public $displayField = 'name';
 
 /**
  * index method

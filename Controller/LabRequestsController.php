@@ -6,6 +6,8 @@ App::uses('AppController', 'Controller');
  * @property LabRequest $LabRequest
  */
 class LabRequestsController extends AppController {
+    
+    public $displayField = 'name';
 
 /**
  * index method

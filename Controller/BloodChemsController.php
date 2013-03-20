@@ -6,6 +6,8 @@ App::uses('AppController', 'Controller');
  * @property BloodChem $BloodChem
  */
 class BloodChemsController extends AppController {
+    
+    public $displayField = 'name';
 
 /**
  * index method

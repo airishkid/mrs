@@ -3,13 +3,13 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('type'); ?></th>
+			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($labExams as $labExam): ?>
 	<tr>
 		<td><?php echo h($labExam['LabExam']['id']); ?>&nbsp;</td>
-		<td><?php echo h($labExam['LabExam']['type']); ?>&nbsp;</td>
+		<td><?php echo h($labExam['LabExam']['name']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $labExam['LabExam']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $labExam['LabExam']['id'])); ?>

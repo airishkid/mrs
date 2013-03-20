@@ -13,7 +13,7 @@ class LabRequest extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'request' => array(
+		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',

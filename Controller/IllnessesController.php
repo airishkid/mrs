@@ -6,6 +6,8 @@ App::uses('AppController', 'Controller');
  * @property Illness $Illness
  */
 class IllnessesController extends AppController {
+    
+    public $displayField = 'name';
 
 /**
  * index method

@@ -4,7 +4,7 @@
 		<legend><?php echo __('Edit Lab Request'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('request');
+		echo $this->Form->input('name');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

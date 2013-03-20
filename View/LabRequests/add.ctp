@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Lab Request'); ?></legend>
 	<?php
-		echo $this->Form->input('request');
+		echo $this->Form->input('name');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
