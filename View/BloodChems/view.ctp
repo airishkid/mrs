@@ -6,9 +6,9 @@
 			<?php echo h($bloodChem['BloodChem']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Type'); ?></dt>
+		<dt><?php echo __('Name'); ?></dt>
 		<dd>
-			<?php echo h($bloodChem['BloodChem']['type']); ?>
+			<?php echo h($bloodChem['BloodChem']['name']); ?>
 			&nbsp;
 		</dd>
 	</dl>

@@ -13,7 +13,7 @@ class BloodChem extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'type' => array(
+		'name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
