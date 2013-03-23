@@ -39,8 +39,21 @@ class PastMedicalHistoriesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+
+			foreach($this->request->data['PastMedicalHistory'] as $key => $data){
+				if(is_array($data)){
+					$this->request->data['PastMedicalHistory'][$key]['patient_id'] = $this->request->data['PastMedicalHistory']['patient_id'];
+					$this->request->data['PastMedicalHistory'][$key]['clinical_history_id'] = $this->request->data['PastMedicalHistory']['clinical_history_id'];
+				}
+			}
+
+			unset($this->request->data['PastMedicalHistory']['patient_id']);
+			unset($this->request->data['PastMedicalHistory']['clinical_history_id']);
+
+			$data = array_shift($this->request->data);
+
 			$this->PastMedicalHistory->create();
-			if ($this->PastMedicalHistory->save($this->request->data)) {
+			if ($this->PastMedicalHistory->saveMany($data, array('deep' => true))) {
 				$this->Session->setFlash(__('The past medical history has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -51,6 +64,7 @@ class PastMedicalHistoriesController extends AppController {
 		$patients = $this->PastMedicalHistory->Patient->find('list');
 		$clinicalHistories = $this->PastMedicalHistory->ClinicalHistory->find('list');
 		$this->set(compact('illnesses', 'patients', 'clinicalHistories'));
+                
 	}
 
 /**

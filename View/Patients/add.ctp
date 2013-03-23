@@ -27,7 +27,10 @@
 				));
 			 ?></li>
 
-			 <li><?php echo $this->Form->input('birthdate'); ?></li>
+			 <li><?php echo $this->Form->input('birthdate', array(
+                                        'minYear' => date('Y') - 200,
+                                        'maxYear' => date('Y')
+                         )); ?></li>
 			 <li>
 		 		<?php 
 				 	echo $this->Form->input('contact_number', array(

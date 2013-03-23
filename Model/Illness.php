@@ -7,6 +7,8 @@ App::uses('AppModel', 'Model');
  * @property PastMedicalHistory $PastMedicalHistory
  */
 class Illness extends AppModel {
+    
+    public $displayField = 'name';
 
 /**
  * Validation rules

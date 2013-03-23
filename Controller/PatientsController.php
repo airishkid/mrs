@@ -8,6 +8,9 @@ App::uses('AppController', 'Controller');
  * @property Patient $Patient
  */
 class PatientsController extends AppController {
+    
+    
+    public $uses = array('Patient','Complaint');
 
     /**
      * index method
@@ -31,7 +34,10 @@ class PatientsController extends AppController {
             throw new NotFoundException(__('Invalid patient'));
         }
         $options = array('conditions' => array('Patient.' . $this->Patient->primaryKey => $id));
-        $this->set('patient', $this->Patient->find('first', $options));
+        $patient =  $this->Patient->find('first', $options);
+        $this->set(compact('patient'));
+
+        
     }
 
     /**
