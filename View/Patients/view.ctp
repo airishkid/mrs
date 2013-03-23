@@ -1,6 +1,11 @@
 <div class ="content">
     <fieldset>
         <div class="profile">
+
+            <?php foreach ($patient['Hmo'] as $hmo): ?>
+                HMO: <?php echo $hmo['company_name'] ?> <br/>
+                Card Number: <?php echo $hmo['card_no'] ?>
+            <?php endforeach; ?>
             <fieldset>
                 <legend><?php echo __('Patient') ?>  </legend>
                 <?php echo $patient['Patient']['last_name']; ?>
@@ -11,8 +16,8 @@
                 <?php echo $patient['Patient']['birthdate']; ?>
                 <?php echo $patient['Patient']['contact_number']; ?>
                 <?php echo $patient['Patient']['image']; ?>
-                <?php foreach($patient['PhysicalState'] as $physicalstate): ?>
-                    <?php ?>
+                <?php foreach ($patient['PhysicalState'] as $physicalstate): ?>
+                <?php echo $physicalstate[''] ?>
                 <?php endforeach; ?>
             </fieldset>
         </div>
@@ -31,6 +36,15 @@
                     <fieldset>
                         <legend><?php echo __('Past Medical History'); ?></legend>
                         <?php foreach ($patient['PastMedicalHistory'] as $past_medical_history): ?>
+                            
+                            <?php
+                            echo $this->Form->checkbox($past_medical_history['status'], array(
+                                'checked' => $past_medical_history['status'],
+                                'disabled' => 'disabled'
+                            ))
+                            ?>
+                            
+                        
                             <?php
                             if ($past_medical_history['id'] == 1) {
                                 echo "Hypertension";
@@ -46,12 +60,7 @@
                                 echo "Stroke";
                             }
                             ?>
-                            <?php
-                            echo $this->Form->checkbox($past_medical_history['status'], array(
-                                'checked' => true,
-                                'disabled' => 'disabled'
-                            ))
-                            ?>
+
                         <?php endforeach; ?>
                         <div id="present_medication">
                             <?php foreach ($patient['PresentMedication'] as $present_medication): ?>
