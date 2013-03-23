@@ -14,7 +14,7 @@ class PlansController extends AppController {
  */
 	public function index() {
 		$this->Plan->recursive = 0;
-		$this->set('plan', $this->paginate());
+		$this->set('plans', $this->paginate());
 	}
 
 /**
@@ -39,6 +39,10 @@ class PlansController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+                    
+                    debug($this->request->data);
+                    
+                    
 			$this->Plan->create();
 			if ($this->Plan->save($this->request->data)) {
 				$this->Session->setFlash(__('The plan has been saved'));
