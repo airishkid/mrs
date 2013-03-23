@@ -39,6 +39,12 @@ class PhysicalStatesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+                    
+                    $weight = $this->request->data['PhysicalState']['weight'];
+                    $height = $this->request->data['PhysicalState']['height'];
+                    
+                    $this->request->data['PhysicalState']['body_mass_index'] = ($weight/($height * $height)) * 703; 
+                    
 			$this->PhysicalState->create();
 			if ($this->PhysicalState->save($this->request->data)) {
 				$this->Session->setFlash(__('The physical state has been saved'));

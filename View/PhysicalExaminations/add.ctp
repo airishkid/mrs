@@ -12,19 +12,19 @@
 		echo $this->Form->input('heart_rate');
 		echo $this->Form->input('temperature');
 		echo $this->Form->input('heent');
-		echo $this->Form->input('heent', $checkbox);
+		echo $this->Form->input('normal-heent', $checkbox);
                 echo $this->Form->input('chest_and_lungs');
-		echo $this->Form->input('chest_and_lungs', $checkbox);
+		echo $this->Form->input('normal-chest_and_lungs', $checkbox);
                 echo $this->Form->input('heart_cvs');
-		echo $this->Form->input('heart_cvs', $checkbox);
+		echo $this->Form->input('normal-heart_cvs', $checkbox);
                 echo $this->Form->input('gastrointestinal');
-		echo $this->Form->input('gastrointestinal', $checkbox);
+		echo $this->Form->input('normal-gastrointestinal', $checkbox);
                 echo $this->Form->input('extrimeties');
-		echo $this->Form->input('extrimeties', $checkbox);
+		echo $this->Form->input('normal-extrimeties', $checkbox);
                 echo $this->Form->input('GUT');
-		echo $this->Form->input('GUT', $checkbox);
+		echo $this->Form->input('normal-GUT', $checkbox);
 		echo $this->Form->input('neuro_muscular');
-		echo $this->Form->input('neuro_muscular', $checkbox);
+		echo $this->Form->input('normal-neuro_muscular', $checkbox);
 		echo $this->Form->input('patient_id');
 	?>
 	</fieldset>

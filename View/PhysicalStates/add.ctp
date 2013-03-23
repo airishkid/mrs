@@ -5,7 +5,6 @@
 	<?php
 		echo $this->Form->input('weight');
 		echo $this->Form->input('height');
-		echo $this->Form->input('body_mass_index');
 		echo $this->Form->input('patient_id');
 	?>
 	</fieldset>

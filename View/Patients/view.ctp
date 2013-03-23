@@ -17,7 +17,9 @@
                 <?php echo $patient['Patient']['contact_number']; ?>
                 <?php echo $patient['Patient']['image']; ?>
                 <?php foreach ($patient['PhysicalState'] as $physicalstate): ?>
-                <?php echo $physicalstate[''] ?>
+                Weight:<?php echo " " . $physicalstate['weight']; ?>oz
+                Height:<?php echo " " . $physicalstate['height']; ?>inch
+                BMI:<?php echo " " . $physicalstate['body_mass_index']; ?>
                 <?php endforeach; ?>
             </fieldset>
         </div>
