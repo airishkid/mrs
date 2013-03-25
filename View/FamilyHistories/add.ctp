@@ -3,9 +3,12 @@
 	<fieldset>
 		<legend><?php echo __('Add Family History'); ?></legend>
 	<?php
-		echo $this->Form->input('illness_id');
-		echo $this->Form->input('status');
-		echo $this->Form->input('patient_id');
+		foreach($illnesses as $key => $illness):
+                    echo $illness . $this->Form->input("FamilyHistory." . ($key-1) . ".status", array(
+                        'label' => ''
+                    ));
+                endforeach;
+                echo $this->Form->input('patient_id');
 		echo $this->Form->input('clinical_history_id');
 	?>
 	</fieldset>

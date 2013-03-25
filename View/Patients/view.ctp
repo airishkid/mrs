@@ -17,9 +17,9 @@
                 <?php echo $patient['Patient']['contact_number']; ?>
                 <?php echo $patient['Patient']['image']; ?>
                 <?php foreach ($patient['PhysicalState'] as $physicalstate): ?>
-                Weight:<?php echo " " . $physicalstate['weight']; ?>oz
-                Height:<?php echo " " . $physicalstate['height']; ?>inch
-                BMI:<?php echo " " . $physicalstate['body_mass_index']; ?>
+                    Weight:<?php echo " " . $physicalstate['weight']; ?>oz
+                    Height:<?php echo " " . $physicalstate['height']; ?>inch
+                    BMI:<?php echo " " . $physicalstate['body_mass_index']; ?>
                 <?php endforeach; ?>
             </fieldset>
         </div>
@@ -38,15 +38,15 @@
                     <fieldset>
                         <legend><?php echo __('Past Medical History'); ?></legend>
                         <?php foreach ($patient['PastMedicalHistory'] as $past_medical_history): ?>
-                            
+
                             <?php
                             echo $this->Form->checkbox($past_medical_history['status'], array(
                                 'checked' => $past_medical_history['status'],
                                 'disabled' => 'disabled'
                             ))
                             ?>
-                            
-                        
+
+
                             <?php
                             if ($past_medical_history['id'] == 1) {
                                 echo "Hypertension";
@@ -106,9 +106,63 @@
 
                         <fieldset>
                             <legend><?php echo __('Family History'); ?></legend>
+                            <?php foreach ($patient['FamilyHistory'] as $family_history): ?>
+
+                                <?php
+                                echo $this->Form->checkbox($family_history['status'], array(
+                                    'checked' => $family_history['status'],
+                                    'disabled' => 'disabled'
+                                ))
+                                ?>
+                                <?php
+                                if ($family_history['id'] == 1) {
+                                    echo "Hypertension";
+                                } elseif ($family_history['id'] == 2) {
+                                    echo "DM2";
+                                } elseif ($family_history['id'] == 3) {
+                                    echo "Asthma";
+                                } elseif ($family_history['id'] == 4) {
+                                    echo "CAD";
+                                } elseif ($family_history['id'] == 5) {
+                                    echo "DM";
+                                } elseif ($family_history['id'] == 6) {
+                                    echo "Stroke";
+                                }
+                                ?>
+
+                            <?php endforeach; ?>
+
                         </fieldset>
                         <fieldset>
                             <legend><?php echo __('Personal and Social History'); ?></legend>
+                            <?php foreach($patient['PersonalSocialHistory'] as $personal_social_history): ?>
+                                <?php echo $this->Form->checkbox($personal_social_history['smoker'], array(
+                                    'checked' => $personal_social_history['smoker'],
+                                    'disabled' => 'disabled'
+                                )) ?> Smoker
+                                <?php echo $personal_social_history['pack_years'] ?>
+                                <?php echo $this->Form->checkbox($personal_social_history['alcohol_drinker'], array(
+                                    'checked' => $personal_social_history['alcohol_drinker'],
+                                    'disabled' => 'disabled'
+                                )) ?> Drinker
+                                
+                                <?php if($personal_social_history['drugs'] && $personal_social_history['food'] != '') {
+                                    echo $this->Form->checkbox('drugs_checkbox', array(
+                                        'checked' => 1,
+                                        'disabled' => 'disabled'
+                                    ));
+                                    echo 'Drugs:';
+                                }?>
+                                <?php echo $personal_social_history['drugs'] ?>
+                                <?php if($personal_social_history['food'] != '') {
+                                    echo $this->Form->checkbox('food_checkbox', array(
+                                        'checked' => 1,
+                                        'disabled' => 'disabled'
+                                    ));
+                                    echo 'Food:';
+                                }?>
+                                <?php echo $personal_social_history['food'] ?>
+                            <?php endforeach; ?>
                         </fieldset>
                     </fieldset>
             </div>
