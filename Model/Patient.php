@@ -22,6 +22,9 @@ App::uses('AppModel', 'Model');
  * @property Therapeutic $Therapeutic
  */
 class Patient extends AppModel {
+    
+    public $virtualFields = array("full_name"=>"CONCAT(last_name, ', ' ,first_name, ' ', middle_name)");
+    public $displayField = 'full_name';
 
 /**
  * Validation rules
