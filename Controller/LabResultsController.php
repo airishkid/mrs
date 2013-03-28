@@ -39,8 +39,23 @@ class LabResultsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+
+      foreach($this->request->data['LabResult'] as $key => $data){
+          if(is_array($data)){
+              $this->request->data['LabResult'][$key]['doctor'] = $this->request->data['LabResult']['doctor'];
+              $this->request->data['LabResult'][$key]['patient_id'] = $this->request->data['LabResult']['patient_id'];
+          }
+      }
+      
+      unset($this->request->data['LabResult']['doctor']);
+      unset($this->request->data['LabResult']['patient_id']);
+      
+      $data = array_shift($this->request->data);
+      // debug($data);
+      // exit;
+                    
 			$this->LabResult->create();
-			if ($this->LabResult->save($this->request->data)) {
+			if ($this->LabResult->saveMany($data, array('deep' => true))) {
 				$this->Session->setFlash(__('The lab result has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
