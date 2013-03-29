@@ -10,8 +10,6 @@ App::uses('AppController', 'Controller');
 class PatientsController extends AppController {
     
     
-    public $uses = array('Patient','Complaint');
-
     /**
      * index method
      *
@@ -31,6 +29,8 @@ class PatientsController extends AppController {
      */
     public function view($id = null) {
         if (!$this->Patient->exists($id)) {
+            
+            
             throw new NotFoundException(__('Invalid patient'));
         }
         $options = array('conditions' => array('Patient.' . $this->Patient->primaryKey => $id));
@@ -47,6 +47,18 @@ class PatientsController extends AppController {
      */
     public function add() {
         if ($this->request->is('post')) {
+            
+            $now = date('Y-m-d');
+            $birthdate = $this->request->data['Patient']['birthdate'];
+            
+            $now = new DateTime(date('Y-m-d'));
+            $birthday = new DateTime("{$birthdate['year']}-{$birthdate['month']}-{$birthdate['day']}");
+            $interval = $now->diff($birthday);
+            $age = $interval->format('%Y');
+            
+            $this->request->data['Patient']['age'] = $age;
+            
+            
             $this->Patient->create();
             if ($this->Patient->save($this->request->data)) {
                 $this->Session->setFlash(__('The patient has been saved'));
