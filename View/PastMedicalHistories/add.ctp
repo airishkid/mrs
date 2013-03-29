@@ -3,8 +3,9 @@
 	<fieldset>
 		<legend><?php echo __('Add Past Medical History'); ?></legend>
 	<?php
+    $counter = 0;
 		foreach($illnesses as $key => $illness):
-                    echo $illness . $this->Form->input("PastMedicalHistory." . ($key-1) . ".status", array(
+                    echo $illness . $this->Form->input("PastMedicalHistory." . ($counter++) . ".status", array(
                         'label' => ''
                     ));
                 endforeach;
