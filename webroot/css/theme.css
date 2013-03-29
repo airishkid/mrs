@@ -1,17 +1,4 @@
-/* 
-    Document   : theme
-    Created on : Mar 23, 2013, 1:06:31 PM
-    Author     : laquisumbing
-    Description:
-        Purpose of the stylesheet follows.
-*/
+.clickable{
 
-root { 
-    display: block;
-}
-
-#content {
-    
-    background-color: graytext;
-    
+  cursor: pointer;
 }
