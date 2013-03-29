@@ -1,4 +1,6 @@
-<div class ="content">
+<?php echo $this->Html->script('patient/main', array('inline' => false)); ?>
+
+<div class ="content patient-view">
     <fieldset>
         <div class="profile">
 
@@ -12,6 +14,7 @@
                 <?php echo $patient['Patient']['first_name']; ?>
                 <?php echo $patient['Patient']['middle_name']; ?>
                 <?php echo $patient['Patient']['gender']; ?>
+                <?php echo $patient['Patient']['age']; ?>
                 <?php echo $patient['Patient']['status']; ?>
                 <?php echo $patient['Patient']['birthdate']; ?>
                 <?php echo $patient['Patient']['contact_number']; ?>
@@ -27,7 +30,7 @@
         <div class ="tabs">
             <div id ="history">
                 <fieldset>
-                    <legend><?php echo __('Clinical History') ?></legend>
+                    <legend class="js-add clickable"><?php echo __('Clinical History') ?></legend>
                     <fieldset>
                         <legend><?php echo __('Complaints'); ?></legend>
                         <?php foreach ($patient['Complaint'] as $complaint): ?>
@@ -42,7 +45,7 @@
                             <?php
                             echo $this->Form->checkbox($past_medical_history['status'], array(
                                 'checked' => $past_medical_history['status'],
-                                'disabled' => 'disabled'
+                                'disabled' => 'disabled',
                             ))
                             ?>
 
@@ -65,8 +68,8 @@
 
                         <?php endforeach; ?>
                         <div id="present_medication">
-                            <?php foreach ($patient['PresentMedication'] as $present_medication): ?>
-                                Present Medication:<?php echo $present_medication['details']; ?>
+                            Present Medication:<?php foreach ($patient['PresentMedication'] as $present_medication): ?>
+                                <?php echo $present_medication['details']; ?>
                             <? endforeach; ?>
                         </div>
                         <div id="hospitalizations">
@@ -146,7 +149,7 @@
                                     'disabled' => 'disabled'
                                 )) ?> Drinker
                                 
-                                <?php if($personal_social_history['drugs'] && $personal_social_history['food'] != '') {
+                                <?php if($personal_social_history['food'] != NULL) {
                                     echo $this->Form->checkbox('drugs_checkbox', array(
                                         'checked' => 1,
                                         'disabled' => 'disabled'
@@ -154,7 +157,7 @@
                                     echo 'Drugs:';
                                 }?>
                                 <?php echo $personal_social_history['drugs'] ?>
-                                <?php if($personal_social_history['food'] != '') {
+                                <?php if($personal_social_history['food'] != NULL) {
                                     echo $this->Form->checkbox('food_checkbox', array(
                                         'checked' => 1,
                                         'disabled' => 'disabled'
@@ -169,7 +172,7 @@
 
             <div id="physical_examinations">
                 <fieldset>
-                    <legend><?php echo __('Physical Examination'); ?></legend>
+                    <legend class="js-add clickable"><?php echo __('Physical Examination'); ?></legend>
                     <?php foreach ($patient['PhysicalExamination'] as $physical_examination): ?>
                         Blood Pressure: <?php echo $physical_examination['blood_pressure']; ?> <br/>
                         Heart Rate: <?php echo $physical_examination['heart_rate']; ?> <br/>
@@ -187,15 +190,28 @@
 
             <div id="plan">
                 <fieldset>
-                    <legend><?php echo __('Plan'); ?></legend>
-                    <?php foreach ($patient['Plan'] as $plan): ?>
-                        Diet: <?php echo $plan['diet'] ?>
+                    <legend class="js-add clickable"><?php echo __('Plan'); ?></legend>
+                    Diet: <?php foreach ($patient['Plan'] as $plan): ?>
+                        <?php echo $plan['diet'] ?>
+                    <?php endforeach; ?>
+                </fieldset>
+            </div>
+            <div id="diagnostics">
+                <fieldset>
+                    <legend class="js-add clickable"><?php echo __('Diagnostics'); ?></legend>
+                    <?php foreach($patient['Diagnostic'] as $diagnostic): ?>
+                        <?php
+                            echo $this->Form->checkbox($diagnostic['status'], array(
+                                'checked' => $diagnostic['status'],
+                                'disabled' => 'disabled',
+                            ))
+                            ?>
                     <?php endforeach; ?>
                 </fieldset>
             </div>
             <div id="therapeutics">
                 <fieldset>
-                    <legend><?php echo __('Therapeutics'); ?></legend>
+                    <legend class="js-add clickable"><?php echo __('Therapeutics'); ?></legend>
                     <table border="2">
                         <tr>
                             <td>Medication</td> 
