@@ -39,8 +39,6 @@ class PhysicalExaminationsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-                    debug($this->request->data);
-                    exit;
 			$this->PhysicalExamination->create();
 			if ($this->PhysicalExamination->save($this->request->data)) {
 				$this->Session->setFlash(__('The physical examination has been saved'));

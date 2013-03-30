@@ -16,7 +16,6 @@
             'label' => ''
         ));
         echo $this->Form->input('PastMedicalHistory.' . ($counter++) . '.illness_id', array('type' => 'hidden', 'value' => $key));
-
     endforeach;
     ?>
     <?php echo $this->Form->input('PresentMedication.details', array('label' => 'Present Medication', 'rows' => 5, 'cols' => 50)); ?>
