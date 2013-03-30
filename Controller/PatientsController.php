@@ -118,5 +118,85 @@ class PatientsController extends AppController {
     public function profile() {
         
     }
+    
+    public function clinical_history(){
+        
+        if ($this->request->is('post')) {
+            
+            $this->loadModel('Complaint');
+            $this->loadModel('PastMedicalHistory');
+            $this->loadModel('PresentMedication');
+            $this->loadModel('Hospitalization');
+            $this->loadModel('Surgery');
+            $this->loadModel('FamilyHistory');
+            $this->loadModel('PersonalSocialHistory');
+            
+            $models = array(
+                'Complaint' => new Complaint(),
+                'PastMedicalHistory' => new PastMedicalHistory(), 
+                'PresentMedication' => new PresentMedication(), 
+                'Hospitalization' => new Hospitalization(), 
+                'Surgery' => new Surgery(), 
+                'FamilyHistory' => new FamilyHistory(), 
+                'PersonalSocialHistory' => new PersonalSocialHistory()
+            );
+            
+            $patient_id = $this->request->data['Patient']['patients'];
+            unset($this->request->data['Patient']);
+            
+            
+            foreach($this->request->data as $model => $values){
+                $is_nested = false;
+                $instance = $models[$model];
+                
+                foreach($values as $key => $value){
+                    if(!is_numeric($key)) break;
+                    
+                    $this->request->data[$model][$key]['patient_id'] = $patient_id;
+                    $is_nested = true;
+                    
+//                    debug($this->request->data[$model][$key]);
 
+//                    if(!$instance->save($this->request->data[$model][$key])){
+//                        $this->Session->setFlash('Something went wrong');
+//                        $this->redirect(array('action' => 'index'));
+//                    }
+                }
+                
+                if(!$is_nested){
+                    $this->request->data[$model]['patient_id'] = $patient_id;
+                    if(!$instance->save($this->request->data[$model])){
+                        $this->Session->setFlash('Something went wrong');
+                        $this->redirect(array('action' => 'index'));
+                    }
+                }else{
+                    if(!$instance->saveMany($this->request->data[$model])){
+                        $this->Session->setFlash('Something went wrong');
+                        $this->redirect(array('action' => 'index'));
+                    }
+                }
+                
+                
+            }
+            
+            
+//            debug($this->request->data);
+//            exit;
+            
+            
+            $this->Session->setFlash('Saved successfully!');
+            $this->redirect(array('action' => 'index'));
+            
+        }
+        
+        
+        
+        $patients = $this->Patient->find('list');
+        $illnesses = $this->Patient->PastMedicalHistory->Illness->find('list');
+        $past_medical_histories = $this->Patient->PastMedicalHistory->find('list');
+        $family_histories = $this->Patient->FamilyHistory->find('list');
+        
+        $this->set(compact('patients','past_medical_histories', 'family_histories', 'illnesses'));
+        
+    }
 }
