@@ -5,7 +5,6 @@
 	<?php
 		echo $this->Form->input('present_complaint');
 		echo $this->Form->input('history_of_present_illness');
-		echo $this->Form->input('clinical_history_id');
 		echo $this->Form->input('patient_id');
 	?>
 	</fieldset>
@@ -16,8 +15,6 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Complaints'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Clinical Histories'), array('controller' => 'clinical_histories', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Clinical History'), array('controller' => 'clinical_histories', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Patients'), array('controller' => 'patients', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Patient'), array('controller' => 'patients', 'action' => 'add')); ?> </li>
 	</ul>
