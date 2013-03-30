@@ -34,16 +34,6 @@ class Complaint extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'clinical_history_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 		'patient_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
@@ -64,13 +54,6 @@ class Complaint extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'ClinicalHistory' => array(
-			'className' => 'ClinicalHistory',
-			'foreignKey' => 'clinical_history_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'Patient' => array(
 			'className' => 'Patient',
 			'foreignKey' => 'patient_id',

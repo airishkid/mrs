@@ -135,19 +135,6 @@ class Patient extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'ClinicalHistory' => array(
-			'className' => 'ClinicalHistory',
-			'foreignKey' => 'patient_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
 		'Complaint' => array(
 			'className' => 'Complaint',
 			'foreignKey' => 'patient_id',
