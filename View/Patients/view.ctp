@@ -51,18 +51,20 @@
 
 
                             <?php
-                            if ($past_medical_history['id'] == 1) {
+                            if ($past_medical_history['illness_id'] == 1) {
                                 echo "Hypertension";
-                            } elseif ($past_medical_history['id'] == 2) {
+                            } elseif ($past_medical_history['illness_id'] == 2) {
                                 echo "DM2";
-                            } elseif ($past_medical_history['id'] == 3) {
+                            } elseif ($past_medical_history['illness_id'] == 7) {
                                 echo "Asthma";
-                            } elseif ($past_medical_history['id'] == 4) {
+                            } elseif ($past_medical_history['illness_id'] == 4) {
                                 echo "CAD";
-                            } elseif ($past_medical_history['id'] == 5) {
+                            } elseif ($past_medical_history['illness_id'] == 5) {
                                 echo "DM";
-                            } elseif ($past_medical_history['id'] == 6) {
+                            } elseif ($past_medical_history['illness_id'] == 6) {
                                 echo "Stroke";
+                            } elseif ($past_medical_history['illness_id'] == 8) {
+                                echo "Cancer";
                             }
                             ?>
 
@@ -118,17 +120,19 @@
                                 ))
                                 ?>
                                 <?php
-                                if ($family_history['id'] == 1) {
+                                if ($family_history['illness_id'] == 1) {
                                     echo "Hypertension";
-                                } elseif ($family_history['id'] == 2) {
+                                } elseif ($family_history['illness_id'] == 2) {
                                     echo "DM2";
-                                } elseif ($family_history['id'] == 3) {
+                                } elseif ($family_history['illness_id'] == 7) {
                                     echo "Asthma";
-                                } elseif ($family_history['id'] == 4) {
+                                } elseif ($family_history['illness_id'] == 4) {
                                     echo "CAD";
-                                } elseif ($family_history['id'] == 5) {
+                                } elseif ($family_history['illness_id'] == 5) {
                                     echo "DM";
-                                } elseif ($family_history['id'] == 6) {
+                                } elseif ($family_history['illness_id'] == 6) {
+                                    echo "Stroke";
+                                } elseif ($family_history['illness_id'] == 8) {
                                     echo "Stroke";
                                 }
                                 ?>
@@ -138,32 +142,40 @@
                         </fieldset>
                         <fieldset>
                             <legend><?php echo __('Personal and Social History'); ?></legend>
-                            <?php foreach($patient['PersonalSocialHistory'] as $personal_social_history): ?>
-                                <?php echo $this->Form->checkbox($personal_social_history['smoker'], array(
+                            <?php foreach ($patient['PersonalSocialHistory'] as $personal_social_history): ?>
+                                <?php
+                                echo $this->Form->checkbox($personal_social_history['smoker'], array(
                                     'checked' => $personal_social_history['smoker'],
                                     'disabled' => 'disabled'
-                                )) ?> Smoker
+                                ))
+                                ?> Smoker
                                 <?php echo $personal_social_history['pack_years'] ?>
-                                <?php echo $this->Form->checkbox($personal_social_history['alcohol_drinker'], array(
+                                <?php
+                                echo $this->Form->checkbox($personal_social_history['alcohol_drinker'], array(
                                     'checked' => $personal_social_history['alcohol_drinker'],
                                     'disabled' => 'disabled'
-                                )) ?> Drinker
-                                
-                                <?php if($personal_social_history['food'] != NULL) {
+                                ))
+                                ?> Drinker
+
+                                <?php
+                                if ($personal_social_history['food'] != NULL) {
                                     echo $this->Form->checkbox('drugs_checkbox', array(
                                         'checked' => 1,
                                         'disabled' => 'disabled'
                                     ));
                                     echo 'Drugs:';
-                                }?>
+                                }
+                                ?>
                                 <?php echo $personal_social_history['drugs'] ?>
-                                <?php if($personal_social_history['food'] != NULL) {
+                                <?php
+                                if ($personal_social_history['food'] != NULL) {
                                     echo $this->Form->checkbox('food_checkbox', array(
                                         'checked' => 1,
                                         'disabled' => 'disabled'
                                     ));
                                     echo 'Food:';
-                                }?>
+                                }
+                                ?>
                                 <?php echo $personal_social_history['food'] ?>
                             <?php endforeach; ?>
                         </fieldset>
@@ -174,16 +186,87 @@
                 <fieldset>
                     <legend class="js-add clickable"><?php echo __('Physical Examination'); ?></legend>
                     <?php foreach ($patient['PhysicalExamination'] as $physical_examination): ?>
+                        <?php
+                        if ($physical_examination['blood_pressure'] == NULL) {
+                            echo $this->Form->checkbox('blood_pressure_checkbox', array('checked' => 1, 'disabled' => 'disabled')) . "Normal";
+                        } elseif ($physical_examination['blood_pressure'] != NULL) {
+                            echo $this->Form->checkbox('blood_pressure_checkbox', array('disabled' => 'disabled')) . "Normal";
+                        }
+                        ?><br/>
                         Blood Pressure: <?php echo $physical_examination['blood_pressure']; ?> <br/>
+                        <?php
+                        if ($physical_examination['heart_rate'] == NULL) {
+                            echo $this->Form->checkbox('heart_rate_checkbox', array('checked' => 1, 'disabled' => 'disabled')) . "Normal";
+                        } elseif ($physical_examination['heart_rate'] != NULL) {
+                            echo $this->Form->checkbox('heart_rate_checkbox', array('disabled' => 'disabled')) . "Normal";
+                        }
+                        ?><br/>
                         Heart Rate: <?php echo $physical_examination['heart_rate']; ?> <br/>
+                        <?php
+                        if ($physical_examination['temperature'] == NULL) {
+                            echo $this->Form->checkbox('temperature_checkbox', array('checked' => 1, 'disabled' => 'disabled')) . "Normal";
+                        } elseif ($physical_examination['temperature'] != NULL) {
+                            echo $this->Form->checkbox('temperature_checkbox', array('disabled' => 'disabled')) . "Normal";
+                        }
+                        ?><br/>
                         Temperature: <?php echo $physical_examination['temperature']; ?> <br/>
+                        <?php
+                        if ($physical_examination['heent'] == NULL) {
+                            echo $this->Form->checkbox('heent_checkbox', array('checked' => 1, 'disabled' => 'disabled')) . "Normal";
+                        } elseif ($physical_examination['heent'] != NULL) {
+                            echo $this->Form->checkbox('heent_checkbox', array('disabled' => 'disabled')) . "Normal";
+                        }
+                        ?><br/>
                         Heent: <?php echo $physical_examination['heent']; ?> <br/>
+                        <?php
+                        if ($physical_examination['chest_and_lungs'] == NULL) {
+                            echo $this->Form->checkbox('chest_and_lungs_checkbox', array('checked' => 1, 'disabled' => 'disabled')) . "Normal";
+                        } elseif ($physical_examination['chest_and_lungs'] != NULL) {
+                            echo $this->Form->checkbox('chest_and_lungs_checkbox', array('disabled' => 'disabled')) . "Normal";
+                        }
+                        ?><br/>
                         Chest and Lungs: <?php echo $physical_examination['chest_and_lungs']; ?> <br/>
+                        <?php
+                        if ($physical_examination['heart_cvs'] == NULL) {
+                            echo $this->Form->checkbox('heart_cvs_checkbox', array('checked' => 1, 'disabled' => 'disabled')) . "Normal";
+                        } elseif ($physical_examination['heart_cvs'] != NULL) {
+                            echo $this->Form->checkbox('heart_cvs_checkbox', array('disabled' => 'disabled')) . "Normal";
+                        }
+                        ?><br/>
                         Heart CVS: <?php echo $physical_examination['heart_cvs']; ?> <br/>
+                        <?php
+                        if ($physical_examination['gastrointestinal'] == NULL) {
+                            echo $this->Form->checkbox('gastrointestinal_checkbox', array('checked' => 1, 'disabled' => 'disabled')) . "Normal";
+                        } elseif ($physical_examination['gastrointestinal'] != NULL) {
+                            echo $this->Form->checkbox('gastrointestinal_checkbox', array('disabled' => 'disabled')) . "Normal";
+                        }
+                        ?><br/>
                         Gastrointestinal: <?php echo $physical_examination['gastrointestinal']; ?> <br/>
+                        <?php
+                        if ($physical_examination['extrimeties'] == NULL) {
+                            echo $this->Form->checkbox('extrimeties_checkbox', array('checked' => 1, 'disabled' => 'disabled')) . "Normal";
+                        } elseif ($physical_examination['extrimities'] != NULL) {
+                            echo $this->Form->checkbox('extrimities_checkbox', array('disabled' => 'disabled')) . "Normal";
+                        }
+                        ?><br/>
                         Extrimeties: <?php echo $physical_examination['extrimeties']; ?> <br/>
+                        <?php
+                        if ($physical_examination['GUT'] == NULL) {
+                            echo $this->Form->checkbox('GUT_checkbox', array('checked' => 1, 'disabled' => 'disabled')) . "Normal";
+                        } elseif ($physical_examination['GUT'] != NULL) {
+                            echo $this->Form->checkbox('GUT_checkbox', array('disabled' => 'disabled')) . "Normal";
+                        }
+                        ?><br/>
                         GUT: <?php echo $physical_examination['GUT']; ?> <br/>
+                        <?php
+                        if ($physical_examination['neuro_muscular'] == NULL) {
+                            echo $this->Form->checkbox('neuro_muscular_checkbox', array('checked' => 1, 'disabled' => 'disabled')) . "Normal";
+                        } elseif ($physical_examination['neuro_muscular'] != NULL) {
+                            echo $this->Form->checkbox('neuro_muscular_checkbox', array('disabled' => 'disabled')) . "Normal";
+                        }
+                        ?><br/>
                         Neuro Muscular: <?php echo $physical_examination['neuro_muscular']; ?>
+
                     <?php endforeach; ?>
                 </fieldset>
             </div>
@@ -199,13 +282,8 @@
             <div id="diagnostics">
                 <fieldset>
                     <legend class="js-add clickable"><?php echo __('Diagnostics'); ?></legend>
-                    <?php foreach($patient['Diagnostic'] as $diagnostic): ?>
-                        <?php
-                            echo $this->Form->checkbox($diagnostic['status'], array(
-                                'checked' => $diagnostic['status'],
-                                'disabled' => 'disabled',
-                            ))
-                            ?>
+                    <?php foreach ($patient['Diagnostic'] as $diagnostic): ?>
+
                     <?php endforeach; ?>
                 </fieldset>
             </div>
