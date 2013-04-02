@@ -17,6 +17,25 @@ class TherapeuticsController extends AppController {
 		$this->set('therapeutics', $this->paginate());
 	}
 
+	public function latest($patient_id){
+		$this->Therapeutic->Patient->Behaviors->attach('Containable');
+
+		if (!$this->Therapeutic->Patient->exists($patient_id)) {
+			throw new NotFoundException(__('Invalid Therapeutic'));
+		}
+
+		$patient = $this->Therapeutic->Patient->find('first', array(
+			'conditions' => array(
+				'Patient.id' => $patient_id
+			),
+			'contain' => array(
+				'Therapeutic'
+			)
+		));
+
+		$this->set(compact('patient'));
+	}
+
 /**
  * view method
  *
@@ -49,6 +68,20 @@ class TherapeuticsController extends AppController {
 		}
 		$patients = $this->Therapeutic->Patient->find('list');
 		$this->set(compact('patients'));
+	}
+
+	public function ajax_add(){
+		if ($this->request->is('post')) {
+			$this->viewClass = 'Json';
+			$this->Therapeutic->create();
+			if ($this->Therapeutic->save($this->request->data)) {
+				$this->set('response', true);
+				$this->set('_serialize', array('response'));
+			} else {
+				$this->set('response', false);
+				$this->set('_serialize', array('response'));
+			}
+		}
 	}
 
 /**
