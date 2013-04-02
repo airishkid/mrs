@@ -29,13 +29,15 @@
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
-	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+  Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+	Router::connect('/clinical_histories/add', array('controller' => 'patients', 'action' => 'clinical_history'));
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on
  * how to customize the loading of plugin routes.
  */
 	CakePlugin::routes();
+  Router::parseExtensions('ajax');
 
 /**
  * Load the CakePHP default routes. Only remove this if you do not want to use
