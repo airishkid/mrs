@@ -98,4 +98,13 @@ class HmosController extends AppController {
 		$this->Session->setFlash(__('Hmo was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
-}
+        
+        public function generate_report(){
+//                $query = "select * from hmo where company_name like " . "{$hmo['Hmo']['company_name']}" . ";";
+                
+
+            
+        }
+        
+        
+}        
