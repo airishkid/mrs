@@ -4,7 +4,6 @@ App::uses('AppModel', 'Model');
  * Patient Model
  *
  * @property Appointment $Appointment
- * @property ClinicalHistory $ClinicalHistory
  * @property Complaint $Complaint
  * @property Diagnostic $Diagnostic
  * @property FamilyHistory $FamilyHistory
@@ -18,6 +17,8 @@ App::uses('AppModel', 'Model');
  * @property PersonalSocialHistory $PersonalSocialHistory
  * @property PhysicalExamination $PhysicalExamination
  * @property PhysicalState $PhysicalState
+ * @property Plan $Plan
+ * @property PresentMedication $PresentMedication
  * @property Surgery $Surgery
  * @property Therapeutic $Therapeutic
  */
@@ -73,8 +74,8 @@ class Patient extends AppModel {
 			),
 		),
 		'age' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+			'numeric' => array(
+				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -129,7 +130,7 @@ class Patient extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',
-			'limit' => '',
+			'limit' => 5,
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',
@@ -154,8 +155,8 @@ class Patient extends AppModel {
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
-			'limit' => '',
+			'order' => 'Diagnostic.id DESC',
+			'limit' => 17,
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',
@@ -167,8 +168,8 @@ class Patient extends AppModel {
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => 'FamilyHistory.id DESC',
-			'limit' => 4,
+			'order' => '',
+			'limit' => 7,
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',
@@ -193,8 +194,8 @@ class Patient extends AppModel {
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => 'Hospitalization.id DESC',
-			'limit' => 3,
+			'order' => '',
+			'limit' => '',
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',
@@ -258,8 +259,8 @@ class Patient extends AppModel {
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => 'PastMedicalHistory.id DESC',
-			'limit' => 6,
+			'order' => '',
+			'limit' => 7,
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',
@@ -271,8 +272,8 @@ class Patient extends AppModel {
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
-			'limit' => '',
+			'order' => 'PersonalSocialHistory.id DESC',
+			'limit' => 1,
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',
@@ -284,8 +285,8 @@ class Patient extends AppModel {
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => 'PhysicalExamination.id DESC',
-			'limit' => 1,
+			'order' => '',
+			'limit' => 5,
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',
@@ -297,8 +298,34 @@ class Patient extends AppModel {
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => '',
+			'order' => 'PhysicalState.id DESC',
 			'limit' => 1,
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Plan' => array(
+			'className' => 'Plan',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'PresentMedication' => array(
+			'className' => 'PresentMedication',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',
@@ -325,32 +352,6 @@ class Patient extends AppModel {
 			'fields' => '',
 			'order' => '',
 			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'Plan' => array(
-			'className' => 'Plan',
-			'foreignKey' => 'patient_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'PresentMedication' => array(
-			'className' => 'PresentMedication',
-			'foreignKey' => 'patient_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => 1,
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',

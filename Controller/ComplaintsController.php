@@ -37,8 +37,9 @@ class ComplaintsController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($patient_id = null) {
 		if ($this->request->is('post')) {
+                    $this->request->data['Complaint']['patient_id'] = $patient_id;
 			$this->Complaint->create();
 			if ($this->Complaint->save($this->request->data)) {
 				$this->Session->setFlash(__('The complaint has been saved'));
@@ -47,9 +48,8 @@ class ComplaintsController extends AppController {
 				$this->Session->setFlash(__('The complaint could not be saved. Please, try again.'));
 			}
 		}
-		$clinicalHistories = $this->Complaint->ClinicalHistory->find('list');
 		$patients = $this->Complaint->Patient->find('list');
-		$this->set(compact('clinicalHistories', 'patients'));
+		$this->set(compact('patients', 'patient_id'));
 	}
 
 /**
@@ -74,16 +74,14 @@ class ComplaintsController extends AppController {
 			$options = array('conditions' => array('Complaint.' . $this->Complaint->primaryKey => $id));
 			$this->request->data = $this->Complaint->find('first', $options);
 		}
-		$clinicalHistories = $this->Complaint->ClinicalHistory->find('list');
 		$patients = $this->Complaint->Patient->find('list');
-		$this->set(compact('clinicalHistories', 'patients'));
+		$this->set(compact('patients'));
 	}
 
 /**
  * delete method
  *
  * @throws NotFoundException
- * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */

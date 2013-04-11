@@ -30,8 +30,8 @@ class AppointmentFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'start' => '2013-03-02 09:47:02',
-			'end' => '2013-03-02 09:47:02',
+			'start' => '2013-04-03 16:41:32',
+			'end' => '2013-04-03 16:41:32',
 			'patient_id' => 1,
 			'assigned_by' => 'Lorem ipsum dolor sit amet'
 		),

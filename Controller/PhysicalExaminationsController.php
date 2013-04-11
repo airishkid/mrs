@@ -37,8 +37,9 @@ class PhysicalExaminationsController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($patient_id = null) {
 		if ($this->request->is('post')) {
+                    $this->request->data['PhysicalExamination']['patient_id'] = $patient_id;
 			$this->PhysicalExamination->create();
 			if ($this->PhysicalExamination->save($this->request->data)) {
 				$this->Session->setFlash(__('The physical examination has been saved'));
@@ -48,7 +49,7 @@ class PhysicalExaminationsController extends AppController {
 			}
 		}
 		$patients = $this->PhysicalExamination->Patient->find('list');
-		$this->set(compact('patients'));
+		$this->set(compact('patients', 'patient_id'));
 	}
 
 /**
@@ -81,7 +82,6 @@ class PhysicalExaminationsController extends AppController {
  * delete method
  *
  * @throws NotFoundException
- * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */

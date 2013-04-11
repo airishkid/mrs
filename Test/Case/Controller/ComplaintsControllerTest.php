@@ -14,7 +14,6 @@ class ComplaintsControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'app.complaint',
-		'app.clinical_history',
 		'app.patient',
 		'app.appointment',
 		'app.diagnostic',
@@ -33,6 +32,8 @@ class ComplaintsControllerTest extends ControllerTestCase {
 		'app.personal_social_history',
 		'app.physical_examination',
 		'app.physical_state',
+		'app.plan',
+		'app.present_medication',
 		'app.surgery',
 		'app.therapeutic'
 	);

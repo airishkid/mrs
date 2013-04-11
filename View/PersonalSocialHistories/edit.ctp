@@ -10,7 +10,6 @@
 		echo $this->Form->input('drugs');
 		echo $this->Form->input('food');
 		echo $this->Form->input('patient_id');
-		echo $this->Form->input('clinical_history_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -23,7 +22,5 @@
 		<li><?php echo $this->Html->link(__('List Personal Social Histories'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Patients'), array('controller' => 'patients', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Patient'), array('controller' => 'patients', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Clinical Histories'), array('controller' => 'clinical_histories', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Clinical History'), array('controller' => 'clinical_histories', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

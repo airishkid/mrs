@@ -8,7 +8,7 @@
 		</dd>
 		<dt><?php echo __('Lab Request'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($diagnostic['LabRequest']['id'], array('controller' => 'lab_requests', 'action' => 'view', $diagnostic['LabRequest']['id'])); ?>
+			<?php echo $this->Html->link($diagnostic['LabRequest']['name'], array('controller' => 'lab_requests', 'action' => 'view', $diagnostic['LabRequest']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Status'); ?></dt>

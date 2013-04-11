@@ -2,20 +2,21 @@
 	<h2><?php echo __('Appointments'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('start'); ?></th>
 			<th><?php echo $this->Paginator->sort('end'); ?></th>
 			<th><?php echo $this->Paginator->sort('patient_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('assigned_by'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
+        
 	<?php foreach ($appointments as $appointment): ?>
+        <?php $patient = $appointment['Patient']['last_name'] . ", " . $appointment['Patient']['first_name'] . " " . $appointment['Patient']['middle_name']; ?>
+
 	<tr>
-		<td><?php echo h($appointment['Appointment']['id']); ?>&nbsp;</td>
 		<td><?php echo h($appointment['Appointment']['start']); ?>&nbsp;</td>
 		<td><?php echo h($appointment['Appointment']['end']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($appointment['Patient']['id'], array('controller' => 'patients', 'action' => 'view', $appointment['Patient']['id'])); ?>
+			<?php echo $this->Html->link($patient, array('controller' => 'patients', 'action' => 'view', $appointment['Patient']['id'])); ?>
 		</td>
 		<td><?php echo h($appointment['Appointment']['assigned_by']); ?>&nbsp;</td>
 		<td class="actions">
@@ -45,6 +46,5 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('New Appointment'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Patients'), array('controller' => 'patients', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Patient'), array('controller' => 'patients', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

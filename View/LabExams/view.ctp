@@ -6,9 +6,9 @@
 			<?php echo h($labExam['LabExam']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Type'); ?></dt>
+		<dt><?php echo __('Name'); ?></dt>
 		<dd>
-			<?php echo h($labExam['LabExam']['type']); ?>
+			<?php echo h($labExam['LabExam']['name']); ?>
 			&nbsp;
 		</dd>
 	</dl>

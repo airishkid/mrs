@@ -1,10 +1,9 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Illness Model
+ * Plan Model
  *
- * @property FamilyHistory $FamilyHistory
- * @property PastMedicalHistory $PastMedicalHistory
+ * @property Patient $Patient
  */
 class Plan extends AppModel {
 
@@ -24,12 +23,22 @@ class Plan extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'patient_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * hasMany associations
+ * belongsTo associations
  *
  * @var array
  */
@@ -42,5 +51,4 @@ class Plan extends AppModel {
 			'order' => ''
 		)
 	);
-
 }

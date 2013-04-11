@@ -18,9 +18,7 @@ class FamilyHistoriesControllerTest extends ControllerTestCase {
 		'app.past_medical_history',
 		'app.patient',
 		'app.appointment',
-		'app.clinical_history',
 		'app.complaint',
-		'app.personal_social_history',
 		'app.diagnostic',
 		'app.lab_request',
 		'app.hmo',
@@ -31,8 +29,11 @@ class FamilyHistoriesControllerTest extends ControllerTestCase {
 		'app.lead_e_c_g',
 		'app.mobile_complaint',
 		'app.ob_gyne_hx',
+		'app.personal_social_history',
 		'app.physical_examination',
 		'app.physical_state',
+		'app.plan',
+		'app.present_medication',
 		'app.surgery',
 		'app.therapeutic'
 	);

@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Lab Exam'); ?></legend>
 	<?php
-		echo $this->Form->input('type');
+		echo $this->Form->input('name');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

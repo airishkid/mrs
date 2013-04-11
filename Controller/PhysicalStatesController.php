@@ -37,9 +37,9 @@ class PhysicalStatesController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($patient_id = null) {
 		if ($this->request->is('post')) {
-                    
+                    $this->request->data['PhysicalState']['patient_id'] = $patient_id;
                     $weight = $this->request->data['PhysicalState']['weight'];
                     $height = $this->request->data['PhysicalState']['height'];
                     
@@ -48,13 +48,13 @@ class PhysicalStatesController extends AppController {
 			$this->PhysicalState->create();
 			if ($this->PhysicalState->save($this->request->data)) {
 				$this->Session->setFlash(__('The physical state has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('controller' => 'patients','action' => 'view', $patient_id));
 			} else {
 				$this->Session->setFlash(__('The physical state could not be saved. Please, try again.'));
 			}
 		}
 		$patients = $this->PhysicalState->Patient->find('list');
-		$this->set(compact('patients'));
+		$this->set(compact('patients', 'patient_id'));
 	}
 
 /**
@@ -87,7 +87,6 @@ class PhysicalStatesController extends AppController {
  * delete method
  *
  * @throws NotFoundException
- * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */

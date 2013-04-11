@@ -30,7 +30,7 @@ class MobileComplaintFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'complaint' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-			'created' => '2013-03-02 09:47:05',
+			'created' => '2013-04-03 16:41:38',
 			'patient_id' => 1
 		),
 	);

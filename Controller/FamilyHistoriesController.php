@@ -39,21 +39,8 @@ class FamilyHistoriesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-                    
-                    foreach($this->request->data['FamilyHistory'] as $key => $data){
-				if(is_array($data)){
-					$this->request->data['FamilyHistory'][$key]['patient_id'] = $this->request->data['FamilyHistory']['patient_id'];
-					$this->request->data['FamilyHistory'][$key]['clinical_history_id'] = $this->request->data['FamilyHistory']['clinical_history_id'];
-				}
-			}
-
-			unset($this->request->data['FamilyHistory']['patient_id']);
-			unset($this->request->data['FamilyHistory']['clinical_history_id']);
-
-			$data = array_shift($this->request->data);
-                    
 			$this->FamilyHistory->create();
-			if ($this->FamilyHistory->saveMany($data, array('deep' => true))) {
+			if ($this->FamilyHistory->save($this->request->data)) {
 				$this->Session->setFlash(__('The family history has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -62,8 +49,7 @@ class FamilyHistoriesController extends AppController {
 		}
 		$illnesses = $this->FamilyHistory->Illness->find('list');
 		$patients = $this->FamilyHistory->Patient->find('list');
-		$clinicalHistories = $this->FamilyHistory->ClinicalHistory->find('list');
-		$this->set(compact('illnesses', 'patients', 'clinicalHistories'));
+		$this->set(compact('illnesses', 'patients'));
 	}
 
 /**
@@ -90,15 +76,13 @@ class FamilyHistoriesController extends AppController {
 		}
 		$illnesses = $this->FamilyHistory->Illness->find('list');
 		$patients = $this->FamilyHistory->Patient->find('list');
-		$clinicalHistories = $this->FamilyHistory->ClinicalHistory->find('list');
-		$this->set(compact('illnesses', 'patients', 'clinicalHistories'));
+		$this->set(compact('illnesses', 'patients'));
 	}
 
 /**
  * delete method
  *
  * @throws NotFoundException
- * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */

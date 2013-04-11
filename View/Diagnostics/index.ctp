@@ -13,7 +13,7 @@
 	<tr>
 		<td><?php echo h($diagnostic['Diagnostic']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($diagnostic['LabRequest']['id'], array('controller' => 'lab_requests', 'action' => 'view', $diagnostic['LabRequest']['id'])); ?>
+			<?php echo $this->Html->link($diagnostic['LabRequest']['name'], array('controller' => 'lab_requests', 'action' => 'view', $diagnostic['LabRequest']['id'])); ?>
 		</td>
 		<td><?php echo h($diagnostic['Diagnostic']['status']); ?>&nbsp;</td>
 		<td>

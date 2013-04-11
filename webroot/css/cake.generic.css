@@ -4,12 +4,13 @@
  * Generic CSS for CakePHP
  *
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       app.webroot.css
  * @since         CakePHP(tm)
@@ -23,14 +24,14 @@
 
 /** General Style Info **/
 body {
-	background: #003d4c;
+	background: #086c95;
 	color: #fff;
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:90%;
 	margin: 0;
 }
 a {
-	color: #003d4c;
+	color: #086c95;
 	text-decoration: underline;
 	font-weight: bold;
 }
@@ -47,7 +48,7 @@ h1, h2, h3, h4 {
 }
 h1 {
 	background:#fff;
-	color: #003d4c;
+	color: #086c95;
 	font-size: 100%;
 }
 h2 {
@@ -77,23 +78,31 @@ p {
 	text-align: left;
 }
 
+#header{
+	padding: 10px 20px;
+}
+
+#logged-user{
+        position:absolute;
+        float: right;
+        margin-left: 1200px;
+}
+
 #header h1 {
-	line-height:400px;
-	background: #ffffff url('../img/logo.jpg') no-repeat left;
+	line-height:20px;
+	background: #086c95 url('../img/thumbnail.png') no-repeat left;
 	color: #fff;
 	padding: 0px 30px;
-        margin-left: 0px;
 }
 #header h1 a {
-	color: #000000;
-	font-weight: bold;
+	color: #fff;
+	background: #086c95;
+	font-weight: normal;
 	text-decoration: none;
-        margin-left: 300px;
-        margin-top: 10px;
 }
 #header h1 a:hover {
 	color: #fff;
-	background: #003d4c;
+	background: #086c95;
 	text-decoration: underline;
 }
 #content{
@@ -737,6 +746,9 @@ pre {
 	display:none;
 }
 
-#username{
-    color: #ffffff;
+.icons{
+    position:relative;
+    margin-top: 100px;
 }
+
+div.tabs { margin-bottom: 10px; }

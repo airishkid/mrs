@@ -5,7 +5,7 @@
 	<?php
 		echo $this->Form->input('start');
 		echo $this->Form->input('end');
-		echo $this->Form->input('patient_id');
+		echo $this->Form->input('Appointment.patient_id', array('value' => $patient_id, 'disabled' => 'disabled'));
 		echo $this->Form->input('assigned_by');
 	?>
 	</fieldset>
@@ -16,7 +16,5 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Appointments'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Patients'), array('controller' => 'patients', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Patient'), array('controller' => 'patients', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -15,14 +15,6 @@ class UsersController extends AppController {
     }
 
     public function login() {
-
-        if($this->Auth->user()){
-            $this->Session->setFlash('You are already logged in!');
-            $this->redirect(array(
-                'action' => 'index'
-            ));
-        }
-
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 $this->redirect($this->Auth->redirect());
@@ -30,11 +22,11 @@ class UsersController extends AppController {
                 $this->Session->setFlash(__('Invalid username or password, try again'));
             }
         }
-        
     }
 
     public function logout() {
         $this->redirect($this->Auth->logout());
+        $this->Session->setFlast(__('Successfully logged out!'));
     }
 
     /**
@@ -111,7 +103,6 @@ class UsersController extends AppController {
      * delete method
      *
      * @throws NotFoundException
-     * @throws MethodNotAllowedException
      * @param string $id
      * @return void
      */
@@ -128,6 +119,5 @@ class UsersController extends AppController {
         $this->Session->setFlash(__('User was not deleted'));
         $this->redirect(array('action' => 'index'));
     }
-    
-    
+
 }

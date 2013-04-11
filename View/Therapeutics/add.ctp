@@ -1,14 +1,14 @@
 <div class="therapeutics form">
-    <?php echo $this->Form->create('Therapeutic'); ?>
-    <fieldset>
-        <legend><?php echo __('Add Therapeutic'); ?></legend>
-        <?php $option = array('label' => '', 'row' => 2, 'cols' => 30) ?>
+<?php echo $this->Form->create('Therapeutic'); ?>
+	<fieldset>
+		<legend><?php echo __('Add Therapeutic'); ?></legend>
+	<?php $option = array('label' => '', 'row' => 2, 'cols' => 30) ?>
         <table border="2">
             <tr>
-                <td>Medication</td> 
-                <td>Dose</td>
-                <td>Sig</td>
-                <td>Remarks</td>
+                <th>Medication</th> 
+                <th>Dose</th>
+                <th>Sig</th>
+                <th>Remarks</th>
             </tr>
                 <tr>
                     <td><?php echo $this->Form->input('medication', $option); ?></td>
@@ -18,18 +18,14 @@
                 </tr>
         </table>
         <?php
-        echo $this->Form->input('patient_id');
+        echo $this->Form->input('Therapeutic.patient_id', array('value' => $patient_id, 'disabled' => 'disabled'));
         ?>
-
-    </fieldset>
-    <?php echo $this->Form->end(__('Submit')); ?>
+	</fieldset>
+<?php echo $this->Form->end(__('Submit')); ?>
 </div>
 <div class="actions">
-    <h3><?php echo __('Actions'); ?></h3>
-    <ul>
-
-        <li><?php echo $this->Html->link(__('List Therapeutics'), array('action' => 'index')); ?></li>
-        <li><?php echo $this->Html->link(__('List Patients'), array('controller' => 'patients', 'action' => 'index')); ?> </li>
-        <li><?php echo $this->Html->link(__('New Patient'), array('controller' => 'patients', 'action' => 'add')); ?> </li>
-    </ul>
+	<h3><?php echo __('Actions'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('List Therapeutics'), array('action' => 'index')); ?></li>
+	</ul>
 </div>

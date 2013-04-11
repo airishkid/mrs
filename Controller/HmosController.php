@@ -81,7 +81,6 @@ class HmosController extends AppController {
  * delete method
  *
  * @throws NotFoundException
- * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */
@@ -99,12 +98,36 @@ class HmosController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
         
-        public function generate_report(){
-//                $query = "select * from hmo where company_name like " . "{$hmo['Hmo']['company_name']}" . ";";
-                
+        public function view_reports($company_name = null){
 
+            if($company_name == null){
+                $this->paginate = array(
+                'fields' => array('Patient.last_name', 'Patient.first_name',
+                    'Patient.middle_name', 'Hmo.company_name', 'Hmo.card_no')
+            );
             
-        }
+            $hmos = $this->paginate('Hmo');
+            
+            }else{
+                $this->paginate = array(
+                'conditions' => array(
+                    'Hmo.company_name' => $company_name
+                ),
+                'fields' => array('Patient.last_name', 'Patient.first_name',
+                    'Patient.middle_name', 'Hmo.company_name', 'Hmo.card_no'),
+                'limit' => 25
+                );
+            
+                $hmos = $this->paginate('Hmo');
+            
+            }
+                
+            
+            
+            $this->set(compact('hmos'));
+            
+                
+	}   
+            
         
-        
-}        
+}

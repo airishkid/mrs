@@ -37,8 +37,9 @@ class HospitalizationsController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($patient_id = null) {
 		if ($this->request->is('post')) {
+                    $this->request->data['Hospitalization']['patient_id'] = $patient_id;
 			$this->Hospitalization->create();
 			if ($this->Hospitalization->save($this->request->data)) {
 				$this->Session->setFlash(__('The hospitalization has been saved'));
@@ -48,7 +49,7 @@ class HospitalizationsController extends AppController {
 			}
 		}
 		$patients = $this->Hospitalization->Patient->find('list');
-		$this->set(compact('patients'));
+		$this->set(compact('patients', 'patient_id'));
 	}
 
 /**
@@ -81,7 +82,6 @@ class HospitalizationsController extends AppController {
  * delete method
  *
  * @throws NotFoundException
- * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */

@@ -1,6 +1,28 @@
-<center>
-    
-    <?php echo $this->Html->link('Patients', array('controller' => 'patients', 'action' => 'index')); ?><br/>
-    <?php echo $this->Html->link('Appointments', array('controller' => 'appointments', 'action' => 'index')); ?>
-
-</center>
+<div class ="icons">
+    <center>
+        <a href="/patients/index"><img src="<?= $this->webroot ?>img/patient.png"/>
+        <a href="/appointments/index"><img src="<?= $this->webroot ?>img/sched.png"/>
+        <a href="/hmos/view_reports"><img src="<?= $this->webroot ?>img/record.png"/>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+    </center>
+</div>

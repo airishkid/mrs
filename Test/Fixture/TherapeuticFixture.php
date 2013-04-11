@@ -36,7 +36,7 @@ class TherapeuticFixture extends CakeTestFixture {
 			'dose' => 'Lorem ipsum dolor sit amet',
 			'sig' => 'Lorem ipsum dolor sit amet',
 			'remarks' => 'Lorem ipsum dolor sit amet',
-			'created' => '2013-03-02 09:47:07',
+			'created' => '2013-04-03 16:41:41',
 			'patient_id' => 1
 		),
 	);

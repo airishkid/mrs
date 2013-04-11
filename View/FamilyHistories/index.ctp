@@ -6,7 +6,6 @@
 			<th><?php echo $this->Paginator->sort('illness_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('status'); ?></th>
 			<th><?php echo $this->Paginator->sort('patient_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('clinical_history_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($familyHistories as $familyHistory): ?>
@@ -18,9 +17,6 @@
 		<td><?php echo h($familyHistory['FamilyHistory']['status']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($familyHistory['Patient']['id'], array('controller' => 'patients', 'action' => 'view', $familyHistory['Patient']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $this->Html->link($familyHistory['ClinicalHistory']['id'], array('controller' => 'clinical_histories', 'action' => 'view', $familyHistory['ClinicalHistory']['id'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $familyHistory['FamilyHistory']['id'])); ?>
@@ -52,7 +48,5 @@
 		<li><?php echo $this->Html->link(__('New Illness'), array('controller' => 'illnesses', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Patients'), array('controller' => 'patients', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Patient'), array('controller' => 'patients', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Clinical Histories'), array('controller' => 'clinical_histories', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Clinical History'), array('controller' => 'clinical_histories', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

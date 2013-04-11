@@ -1,3 +1,13 @@
+<style>
+    .logo{
+        position: absolute;
+    }
+</style>
+
+<!--<div class="logo">
+    <img src="<?= $this->webroot ?>img/login-logo.png" />
+</div>-->
+
 <div class="users form">
 <?php echo $this->Session->flash('auth'); ?>
 <?php echo $this->Form->create('User'); ?>

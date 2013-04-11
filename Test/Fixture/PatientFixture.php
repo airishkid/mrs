@@ -16,6 +16,7 @@ class PatientFixture extends CakeTestFixture {
 		'first_name' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'middle_name' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'gender' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'age' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'status' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 45, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'birthdate' => array('type' => 'date', 'null' => false, 'default' => null),
 		'contact_number' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
@@ -39,11 +40,12 @@ class PatientFixture extends CakeTestFixture {
 			'first_name' => 'Lorem ipsum dolor sit amet',
 			'middle_name' => 'Lorem ipsum dolor sit amet',
 			'gender' => 'Lorem ipsum dolor sit amet',
+			'age' => 1,
 			'status' => 'Lorem ipsum dolor sit amet',
-			'birthdate' => '2013-03-02',
+			'birthdate' => '2013-04-03',
 			'contact_number' => 'Lorem ipsum dolor sit amet',
 			'image' => 'Lorem ipsum dolor sit amet',
-			'created' => '2013-03-02'
+			'created' => '2013-04-03'
 		),
 	);
 

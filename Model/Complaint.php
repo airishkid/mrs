@@ -3,7 +3,6 @@ App::uses('AppModel', 'Model');
 /**
  * Complaint Model
  *
- * @property ClinicalHistory $ClinicalHistory
  * @property Patient $Patient
  */
 class Complaint extends AppModel {
@@ -25,6 +24,16 @@ class Complaint extends AppModel {
 			),
 		),
 		'history_of_present_illness' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'created' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',

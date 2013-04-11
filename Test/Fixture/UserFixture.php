@@ -38,14 +38,14 @@ class UserFixture extends CakeTestFixture {
 			'id' => 1,
 			'last_name' => 'Lorem ipsum dolor sit amet',
 			'first_name' => 'Lorem ipsum dolor sit amet',
-			'birthdate' => '2013-03-02',
+			'birthdate' => '2013-04-03',
 			'contact_number' => 'Lorem ipsum dolor sit amet',
 			'background' => 'Lorem ipsum dolor sit amet',
 			'username' => 'Lorem ipsum dolor sit amet',
 			'password' => 'Lorem ipsum dolor sit amet',
 			'role_id' => 1,
-			'created' => '2013-03-02 09:47:07',
-			'modified' => '2013-03-02 09:47:07'
+			'created' => '2013-04-03 16:41:42',
+			'modified' => '2013-04-03 16:41:42'
 		),
 	);
 

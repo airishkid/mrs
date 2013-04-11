@@ -36,11 +36,6 @@
 			<?php echo $this->Html->link($personalSocialHistory['Patient']['id'], array('controller' => 'patients', 'action' => 'view', $personalSocialHistory['Patient']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Clinical History'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($personalSocialHistory['ClinicalHistory']['id'], array('controller' => 'clinical_histories', 'action' => 'view', $personalSocialHistory['ClinicalHistory']['id'])); ?>
-			&nbsp;
-		</dd>
 	</dl>
 </div>
 <div class="actions">
@@ -52,7 +47,5 @@
 		<li><?php echo $this->Html->link(__('New Personal Social History'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Patients'), array('controller' => 'patients', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Patient'), array('controller' => 'patients', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Clinical Histories'), array('controller' => 'clinical_histories', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Clinical History'), array('controller' => 'clinical_histories', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

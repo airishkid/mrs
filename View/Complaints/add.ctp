@@ -5,7 +5,8 @@
 	<?php
 		echo $this->Form->input('present_complaint');
 		echo $this->Form->input('history_of_present_illness');
-		echo $this->Form->input('patient_id');
+		echo $this->Form->input('created', array('label' => 'Date'));
+		echo $this->Form->input('patient_id', array('value' => $patient_id, 'disabled' => 'disabled'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

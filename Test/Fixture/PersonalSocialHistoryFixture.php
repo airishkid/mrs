@@ -18,7 +18,6 @@ class PersonalSocialHistoryFixture extends CakeTestFixture {
 		'drugs' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'food' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'patient_id' => array('type' => 'integer', 'null' => false, 'default' => null),
-		'clinical_history_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1)
 		),
@@ -38,8 +37,7 @@ class PersonalSocialHistoryFixture extends CakeTestFixture {
 			'alcohol_drinker' => 1,
 			'drugs' => 'Lorem ipsum dolor sit amet',
 			'food' => 'Lorem ipsum dolor sit amet',
-			'patient_id' => 1,
-			'clinical_history_id' => 1
+			'patient_id' => 1
 		),
 	);
 

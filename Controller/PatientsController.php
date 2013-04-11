@@ -8,14 +8,14 @@ App::uses('AppController', 'Controller');
  * @property Patient $Patient
  */
 class PatientsController extends AppController {
-    
-    
+
     /**
      * index method
      *
      * @return void
      */
-    public function index() {
+    public function index($keyword = null) {
+
         $this->Patient->recursive = 0;
         $this->set('patients', $this->paginate());
     }
@@ -28,16 +28,23 @@ class PatientsController extends AppController {
      * @return void
      */
     public function view($id = null) {
+
+
+
         if (!$this->Patient->exists($id)) {
-            
-            
             throw new NotFoundException(__('Invalid patient'));
         }
         $options = array('conditions' => array('Patient.' . $this->Patient->primaryKey => $id));
-        $patient =  $this->Patient->find('first', $options);
-        $this->set(compact('patient'));
 
+        $patient = $this->Patient->find('first', $options);
+        $illnesses = $this->Patient->PastMedicalHistory->Illness->find('list');
+        $lab_requests = $this->Patient->Diagnostic->LabRequest->find('list');
+        $lab_exams = $this->Patient->LabResult->LabExam->find('list');
+        $blood_chems = $this->Patient->LabResult->BloodChem->find('list');
         
+
+        $this->set(compact('patient', 'illnesses', 'lab_requests', 'lab_exams', 'blood_chems'));
+        $this->set('patient', $this->Patient->find('first', $options));
     }
 
     /**
@@ -47,18 +54,25 @@ class PatientsController extends AppController {
      */
     public function add() {
         if ($this->request->is('post')) {
-            
+
+            $extension = end(explode('.', $this->request->data['Patient']['image']['name']));
+            $tmp = $this->request->data['Patient']['image']['tmp_name'];
+            $filename = String::uuid() . ".{$extension}";
+            $destination = "/Users/laquisumbing/web/sample/data/images/patients/{$filename}";
+            move_uploaded_file($tmp, $destination);
+            $this->request->data['Patient']['image'] = $filename;
+
             $now = date('Y-m-d');
             $birthdate = $this->request->data['Patient']['birthdate'];
-            
+
             $now = new DateTime(date('Y-m-d'));
             $birthday = new DateTime("{$birthdate['year']}-{$birthdate['month']}-{$birthdate['day']}");
             $interval = $now->diff($birthday);
             $age = $interval->format('%Y');
-            
+
             $this->request->data['Patient']['age'] = $age;
-            
-            
+
+
             $this->Patient->create();
             if ($this->Patient->save($this->request->data)) {
                 $this->Session->setFlash(__('The patient has been saved'));
@@ -81,6 +95,24 @@ class PatientsController extends AppController {
             throw new NotFoundException(__('Invalid patient'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
+            $extension = end(explode('.', $this->request->data['Patient']['image']['name']));
+            $tmp = $this->request->data['Patient']['image']['tmp_name'];
+            $filename = String::uuid() . ".{$extension}";
+            $destination = "/Users/laquisumbing/web/sample/data/images/patients/{$filename}";
+            move_uploaded_file($tmp, $destination);
+            $this->request->data['Patient']['image'] = $filename;
+
+            $now = date('Y-m-d');
+            $birthdate = $this->request->data['Patient']['birthdate'];
+
+            $now = new DateTime(date('Y-m-d'));
+            $birthday = new DateTime("{$birthdate['year']}-{$birthdate['month']}-{$birthdate['day']}");
+            $interval = $now->diff($birthday);
+            $age = $interval->format('%Y');
+
+            $this->request->data['Patient']['age'] = $age;
+
+
             if ($this->Patient->save($this->request->data)) {
                 $this->Session->setFlash(__('The patient has been saved'));
                 $this->redirect(array('action' => 'index'));
@@ -97,7 +129,6 @@ class PatientsController extends AppController {
      * delete method
      *
      * @throws NotFoundException
-     * @throws MethodNotAllowedException
      * @param string $id
      * @return void
      */
@@ -115,14 +146,16 @@ class PatientsController extends AppController {
         $this->redirect(array('action' => 'index'));
     }
 
-    public function profile() {
-        
-    }
-    
-    public function clinical_history(){
-        
+    public function clinical_history($patient_id = null) {
+
+        if (!$this->Patient->exists($patient_id)) {
+            $this->Session->setFlash(__('Patient doesn\'t exist'));
+            $this->redirect(array('action' => 'index'));
+        }
+
+
         if ($this->request->is('post')) {
-            
+
             $this->loadModel('Complaint');
             $this->loadModel('PastMedicalHistory');
             $this->loadModel('PresentMedication');
@@ -130,73 +163,64 @@ class PatientsController extends AppController {
             $this->loadModel('Surgery');
             $this->loadModel('FamilyHistory');
             $this->loadModel('PersonalSocialHistory');
-            
+
             $models = array(
                 'Complaint' => new Complaint(),
-                'PastMedicalHistory' => new PastMedicalHistory(), 
-                'PresentMedication' => new PresentMedication(), 
-                'Hospitalization' => new Hospitalization(), 
-                'Surgery' => new Surgery(), 
-                'FamilyHistory' => new FamilyHistory(), 
+                'PastMedicalHistory' => new PastMedicalHistory(),
+                'PresentMedication' => new PresentMedication(),
+                'Hospitalization' => new Hospitalization(),
+                'Surgery' => new Surgery(),
+                'FamilyHistory' => new FamilyHistory(),
                 'PersonalSocialHistory' => new PersonalSocialHistory()
             );
-            
-            $patient_id = $this->request->data['Patient']['patients'];
+
             unset($this->request->data['Patient']);
-            
-            
-            foreach($this->request->data as $model => $values){
+
+//            debug($patient_id);
+            foreach ($this->request->data as $model => $values) {
                 $is_nested = false;
                 $instance = $models[$model];
-                
-                foreach($values as $key => $value){
-                    if(!is_numeric($key)) break;
-                    
+
+                foreach ($values as $key => $value) {
+                    if (!is_numeric($key))
+                        break;
+
                     $this->request->data[$model][$key]['patient_id'] = $patient_id;
                     $is_nested = true;
-                    
-//                    debug($this->request->data[$model][$key]);
 
+//                    debug($this->request->data[$model][$key]);
 //                    if(!$instance->save($this->request->data[$model][$key])){
 //                        $this->Session->setFlash('Something went wrong');
 //                        $this->redirect(array('action' => 'index'));
 //                    }
                 }
-                
-                if(!$is_nested){
+
+                if (!$is_nested) {
                     $this->request->data[$model]['patient_id'] = $patient_id;
-                    if(!$instance->save($this->request->data[$model])){
+                    if (!$instance->save($this->request->data[$model])) {
                         $this->Session->setFlash('Something went wrong');
                         $this->redirect(array('action' => 'index'));
                     }
-                }else{
-                    if(!$instance->saveMany($this->request->data[$model])){
+                } else {
+                    if (!$instance->saveMany($this->request->data[$model])) {
                         $this->Session->setFlash('Something went wrong');
                         $this->redirect(array('action' => 'index'));
                     }
                 }
-                
-                
             }
-            
-            
-//            debug($this->request->data);
-//            exit;
-            
-            
+
+
+
             $this->Session->setFlash('Saved successfully!');
-            $this->redirect(array('action' => 'index'));
-            
+            $this->redirect(array('action' => 'view', $patient_id));
         }
-        
-        
-        
+
+
         $patients = $this->Patient->find('list');
         $illnesses = $this->Patient->PastMedicalHistory->Illness->find('list');
         $past_medical_histories = $this->Patient->PastMedicalHistory->find('list');
         $family_histories = $this->Patient->FamilyHistory->find('list');
-        
-        $this->set(compact('patients','past_medical_histories', 'family_histories', 'illnesses'));
-        
+        $this->set(compact('patients', 'past_medical_histories', 'family_histories', 'illnesses', 'patient_id'));
     }
+
 }

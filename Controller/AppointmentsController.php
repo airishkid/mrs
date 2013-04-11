@@ -37,18 +37,19 @@ class AppointmentsController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($patient_id = null) {
 		if ($this->request->is('post')) {
-			$this->Appointment->create();
-			if ($this->Appointment->save($this->request->data)) {
-				$this->Session->setFlash(__('The appointment has been saved'));
+                    $this->request->data['Appointment']['patient_id'] = $patient_id;
+                    $this->Appointment->create();
+                        if ($this->Appointment->save($this->request->data)) {
+                            $this->Session->setFlash(__('The appointment has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The appointment could not be saved. Please, try again.'));
 			}
 		}
 		$patients = $this->Appointment->Patient->find('list');
-		$this->set(compact('patients'));
+		$this->set(compact('patients', 'patient_id'));
 	}
 
 /**
@@ -81,7 +82,6 @@ class AppointmentsController extends AppController {
  * delete method
  *
  * @throws NotFoundException
- * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */

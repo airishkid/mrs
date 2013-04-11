@@ -16,10 +16,26 @@ class IllnessTest extends CakeTestCase {
 		'app.illness',
 		'app.family_history',
 		'app.patient',
-		'app.clinical_history',
+		'app.appointment',
 		'app.complaint',
+		'app.diagnostic',
+		'app.lab_request',
+		'app.hmo',
+		'app.hospitalization',
+		'app.lab_result',
+		'app.lab_exam',
+		'app.blood_chem',
+		'app.lead_e_c_g',
+		'app.mobile_complaint',
+		'app.ob_gyne_hx',
 		'app.past_medical_history',
-		'app.personal_social_history'
+		'app.personal_social_history',
+		'app.physical_examination',
+		'app.physical_state',
+		'app.plan',
+		'app.present_medication',
+		'app.surgery',
+		'app.therapeutic'
 	);
 
 /**

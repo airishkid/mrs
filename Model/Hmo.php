@@ -6,8 +6,6 @@ App::uses('AppModel', 'Model');
  * @property Patient $Patient
  */
 class Hmo extends AppModel {
-    
-    public $displayField = 'company_name';
 
 /**
  * Use table

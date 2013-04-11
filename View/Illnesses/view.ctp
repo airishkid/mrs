@@ -35,7 +35,6 @@
 		<th><?php echo __('Illness Id'); ?></th>
 		<th><?php echo __('Status'); ?></th>
 		<th><?php echo __('Patient Id'); ?></th>
-		<th><?php echo __('Clinical History Id'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
@@ -46,7 +45,6 @@
 			<td><?php echo $familyHistory['illness_id']; ?></td>
 			<td><?php echo $familyHistory['status']; ?></td>
 			<td><?php echo $familyHistory['patient_id']; ?></td>
-			<td><?php echo $familyHistory['clinical_history_id']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'family_histories', 'action' => 'view', $familyHistory['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'family_histories', 'action' => 'edit', $familyHistory['id'])); ?>
@@ -72,7 +70,6 @@
 		<th><?php echo __('Illness Id'); ?></th>
 		<th><?php echo __('Status'); ?></th>
 		<th><?php echo __('Patient Id'); ?></th>
-		<th><?php echo __('Clinical History Id'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
@@ -83,7 +80,6 @@
 			<td><?php echo $pastMedicalHistory['illness_id']; ?></td>
 			<td><?php echo $pastMedicalHistory['status']; ?></td>
 			<td><?php echo $pastMedicalHistory['patient_id']; ?></td>
-			<td><?php echo $pastMedicalHistory['clinical_history_id']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'past_medical_histories', 'action' => 'view', $pastMedicalHistory['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'past_medical_histories', 'action' => 'edit', $pastMedicalHistory['id'])); ?>

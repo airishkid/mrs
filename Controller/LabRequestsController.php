@@ -6,8 +6,6 @@ App::uses('AppController', 'Controller');
  * @property LabRequest $LabRequest
  */
 class LabRequestsController extends AppController {
-    
-    public $displayField = 'name';
 
 /**
  * index method
@@ -79,7 +77,6 @@ class LabRequestsController extends AppController {
  * delete method
  *
  * @throws NotFoundException
- * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */

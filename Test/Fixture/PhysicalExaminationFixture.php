@@ -12,16 +12,16 @@ class PhysicalExaminationFixture extends CakeTestFixture {
  */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
-		'blood_pressure' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
-		'heart_rate' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
-		'temperature' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
-		'heent' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
-		'chest_and_lungs' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
-		'heart_cvs' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
-		'gastrointestinal' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
-		'extrimeties' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
-		'GUT' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
-		'neuro_muscular' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'blood_pressure' => array('type' => 'string', 'null' => false, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'heart_rate' => array('type' => 'string', 'null' => false, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'temperature' => array('type' => 'string', 'null' => false, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'heent' => array('type' => 'string', 'null' => false, 'default' => '1', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'chest_and_lungs' => array('type' => 'string', 'null' => false, 'default' => '1', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'heart_cvs' => array('type' => 'string', 'null' => false, 'default' => '1', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'gastrointestinal' => array('type' => 'string', 'null' => false, 'default' => '1', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'extrimeties' => array('type' => 'string', 'null' => false, 'default' => '1', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'GUT' => array('type' => 'string', 'null' => false, 'default' => '1', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'neuro_muscular' => array('type' => 'string', 'null' => false, 'default' => '1', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'patient_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'created' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'indexes' => array(
@@ -49,7 +49,7 @@ class PhysicalExaminationFixture extends CakeTestFixture {
 			'GUT' => 'Lorem ipsum dolor sit amet',
 			'neuro_muscular' => 'Lorem ipsum dolor sit amet',
 			'patient_id' => 1,
-			'created' => '2013-03-02 09:47:06'
+			'created' => '2013-04-03 16:41:40'
 		),
 	);
 

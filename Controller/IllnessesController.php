@@ -6,8 +6,6 @@ App::uses('AppController', 'Controller');
  * @property Illness $Illness
  */
 class IllnessesController extends AppController {
-    
-    public $displayField = 'name';
 
 /**
  * index method
@@ -79,7 +77,6 @@ class IllnessesController extends AppController {
  * delete method
  *
  * @throws NotFoundException
- * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */

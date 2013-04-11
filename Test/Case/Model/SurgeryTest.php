@@ -16,14 +16,12 @@ class SurgeryTest extends CakeTestCase {
 		'app.surgery',
 		'app.patient',
 		'app.appointment',
-		'app.clinical_history',
 		'app.complaint',
+		'app.diagnostic',
+		'app.lab_request',
 		'app.family_history',
 		'app.illness',
 		'app.past_medical_history',
-		'app.personal_social_history',
-		'app.diagnostic',
-		'app.lab_request',
 		'app.hmo',
 		'app.hospitalization',
 		'app.lab_result',
@@ -32,8 +30,11 @@ class SurgeryTest extends CakeTestCase {
 		'app.lead_e_c_g',
 		'app.mobile_complaint',
 		'app.ob_gyne_hx',
+		'app.personal_social_history',
 		'app.physical_examination',
 		'app.physical_state',
+		'app.plan',
+		'app.present_medication',
 		'app.therapeutic'
 	);
 

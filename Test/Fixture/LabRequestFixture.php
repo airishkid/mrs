@@ -12,7 +12,7 @@ class LabRequestFixture extends CakeTestFixture {
  */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
-		'request' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'name' => array('type' => 'string', 'null' => false, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1)
 		),
@@ -27,7 +27,7 @@ class LabRequestFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'request' => 'Lorem ipsum dolor sit amet'
+			'name' => 'Lorem ipsum dolor sit amet'
 		),
 	);
 

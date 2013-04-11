@@ -1,9 +1,9 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * LabExam Model
+ * PresentMedication Model
  *
- * @property LabResult $LabResult
+ * @property Patient $Patient
  */
 class PresentMedication extends AppModel {
 
@@ -28,7 +28,7 @@ class PresentMedication extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * hasMany associations
+ * belongsTo associations
  *
  * @var array
  */
@@ -41,5 +41,4 @@ class PresentMedication extends AppModel {
 			'order' => ''
 		)
 	);
-
 }

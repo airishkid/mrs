@@ -1,4 +1,5 @@
-	<h2><?php echo __('Plan'); ?></h2>
+<div class="plans index">
+	<h2><?php echo __('Plans'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>

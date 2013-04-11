@@ -48,8 +48,7 @@ class PersonalSocialHistoriesController extends AppController {
 			}
 		}
 		$patients = $this->PersonalSocialHistory->Patient->find('list');
-		$clinicalHistories = $this->PersonalSocialHistory->ClinicalHistory->find('list');
-		$this->set(compact('patients', 'clinicalHistories'));
+		$this->set(compact('patients'));
 	}
 
 /**
@@ -75,15 +74,13 @@ class PersonalSocialHistoriesController extends AppController {
 			$this->request->data = $this->PersonalSocialHistory->find('first', $options);
 		}
 		$patients = $this->PersonalSocialHistory->Patient->find('list');
-		$clinicalHistories = $this->PersonalSocialHistory->ClinicalHistory->find('list');
-		$this->set(compact('patients', 'clinicalHistories'));
+		$this->set(compact('patients'));
 	}
 
 /**
  * delete method
  *
  * @throws NotFoundException
- * @throws MethodNotAllowedException
  * @param string $id
  * @return void
  */

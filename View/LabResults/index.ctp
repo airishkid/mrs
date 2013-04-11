@@ -14,10 +14,10 @@
 	<tr>
 		<td><?php echo h($labResult['LabResult']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($labResult['LabExam']['id'], array('controller' => 'lab_exams', 'action' => 'view', $labResult['LabExam']['id'])); ?>
+			<?php echo $this->Html->link($labResult['LabExam']['name'], array('controller' => 'lab_exams', 'action' => 'view', $labResult['LabExam']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($labResult['BloodChem']['id'], array('controller' => 'blood_chems', 'action' => 'view', $labResult['BloodChem']['id'])); ?>
+			<?php echo $this->Html->link($labResult['BloodChem']['name'], array('controller' => 'blood_chems', 'action' => 'view', $labResult['BloodChem']['id'])); ?>
 		</td>
 		<td><?php echo h($labResult['LabResult']['result']); ?>&nbsp;</td>
 		<td><?php echo h($labResult['LabResult']['doctor']); ?>&nbsp;</td>

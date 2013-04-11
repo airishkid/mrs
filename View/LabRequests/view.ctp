@@ -6,9 +6,9 @@
 			<?php echo h($labRequest['LabRequest']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Request'); ?></dt>
+		<dt><?php echo __('Name'); ?></dt>
 		<dd>
-			<?php echo h($labRequest['LabRequest']['request']); ?>
+			<?php echo h($labRequest['LabRequest']['name']); ?>
 			&nbsp;
 		</dd>
 	</dl>
