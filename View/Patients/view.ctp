@@ -659,7 +659,6 @@
                         <th><?php echo __('Id'); ?></th>
                         <th><?php echo __('Complaint'); ?></th>
                         <th><?php echo __('Created'); ?></th>
-                        <th class="actions"><?php echo __('Actions'); ?></th>
                     </tr>
                     <?php
                     $i = 0;
