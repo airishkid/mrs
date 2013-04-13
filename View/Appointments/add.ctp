@@ -6,7 +6,7 @@
 		echo $this->Form->input('start');
 		echo $this->Form->input('end');
 		echo $this->Form->input('Appointment.patient_id', array('value' => $patient_id, 'disabled' => 'disabled'));
-		echo $this->Form->input('assigned_by');
+		echo $this->Form->input('assigned_by', array('disabled' => 'disabled', 'value' => $assigned_by));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

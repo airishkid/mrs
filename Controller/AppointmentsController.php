@@ -38,8 +38,11 @@ class AppointmentsController extends AppController {
  * @return void
  */
 	public function add($patient_id = null) {
+            $assigned_by = $this->Session->read('Auth.User.first_name') . " " . $this->Session->read('Auth.User.last_name');
+            
 		if ($this->request->is('post')) {
                     $this->request->data['Appointment']['patient_id'] = $patient_id;
+                    $this->request->data['Appointment']['assigned_by'] = $assigned_by;
                     $this->Appointment->create();
                         if ($this->Appointment->save($this->request->data)) {
                             $this->Session->setFlash(__('The appointment has been saved'));
@@ -49,7 +52,7 @@ class AppointmentsController extends AppController {
 			}
 		}
 		$patients = $this->Appointment->Patient->find('list');
-		$this->set(compact('patients', 'patient_id'));
+		$this->set(compact('patients', 'patient_id', 'assigned_by'));
 	}
 
 /**
