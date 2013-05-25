@@ -579,7 +579,6 @@
             <?php if (!empty($patient['LabResult'])): ?>
                 <table cellpadding = "0" cellspacing = "0">
                     <tr>
-                        <th><?php echo __('Id'); ?></th>
                         <th><?php echo __('Lab Exam'); ?></th>
                         <th><?php echo __('Blood Chem'); ?></th>
                         <th><?php echo __('Result'); ?></th>
@@ -591,9 +590,8 @@
                     foreach ($patient['LabResult'] as $labResult):
                         ?>
                         <tr>
-                            <td><?php echo $labResult['id']; ?></td>
-                            <td><?php echo $lab_exams[$labResult['lab_exam_id']]; ?></td>
-                            <td><?php echo $blood_chems[$labResult['blood_chem_id']]; ?></td>
+                            <td><?php if(isset($lab_exams[$labResult['lab_exam_id']])){ echo $lab_exams[$labResult['lab_exam_id']]; }; ?></td>
+                            <td><?php if(isset($blood_chems[$labResult['blood_chem_id']])){ echo $blood_chems[$labResult['blood_chem_id']]; }; ?></td>
                             <td><?php echo $labResult['result']; ?></td>
                             <td><?php echo $labResult['doctor']; ?></td>
                             <td class="actions">
